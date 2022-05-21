@@ -10,7 +10,7 @@ def proj(u, v):
     return (np.dot(v,u) / np.dot(u,u)) * u
 
 def len_v(v):
-    return pow(np.dot(v,v), 1/2)
+    return math.sqrt(dot_prod(v,v))
 
 def q_r(matrix):
     matrix = np.transpose(matrix)
