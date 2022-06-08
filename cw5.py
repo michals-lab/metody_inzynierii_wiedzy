@@ -12,17 +12,20 @@ def dot_prod(v1,v2):
     for i in range(len(v1)):
         v3 += v1[i]*v2[i]
     return v3
-    
+
+# srednia el wektora 
 def average(v1):
     l = len(v1)
     return dot_prod(v1, np.ones(l))/l
 
+# oblicza waraincje el wektora
 def variance(v1):
     l = len(v1)
     sr = average(v1)
     x =v1 -(np.ones(l) * sr)
     return dot_prod(x, x)/l
 
+# odchylenie 
 def std_deviation(v1):
     return math.sqrt(variance(v1))
 

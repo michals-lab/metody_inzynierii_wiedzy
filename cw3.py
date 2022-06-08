@@ -24,6 +24,13 @@ def euclid(lst1, lst2):
     res = np.sqrt(tmp)
     return res
 
+# przypisywanie wktorów losowo do 0 albo 1
+def mix(data):
+    res = [i.copy() for i in data]
+    for i in range(len(data)):
+        res[i][-1] = random.choice([0,1])
+    return res
+
 def distance(a,matrix):
     res = []
     for i in range( len(matrix)):
@@ -33,11 +40,14 @@ def distance(a,matrix):
 
 # %%
 
+# podział waktorów względem klasy decyzyjnej
 def sort(data):
     res = {}
     for i in data:
+        # jeli klasa dec nie jest w kluczch -> stwórz nowy klucz 
         if i[-1] not in res.keys():
             res[i[-1]] = [i]
+        # dodaje wektor do listy odpowiednio z kluczami
         else:
             res[i[-1]].append(i)
     return res

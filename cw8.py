@@ -30,16 +30,23 @@ def q_r(matrix):
     q = np.transpose(q)
     return (q, r)
 
+# liczenie wartoci własnych 
 def ak(matrix, k):
+    # dla karzdego wiersza w macierzy
     for x in range(len(matrix)):
+        # sprawdzamy czy jest symetryczna
         if (matrix == np.transpose(matrix)).all():
+            # obliczamy qr tyle razy ile parametr k
             for x in range(k):
                 q, r = q_r(matrix)
+                # r*q
                 matrix = np.dot(r,q)
             return matrix
+        # jeli nie jest to koniec
         else:
             return
 
+# sprawdz czy macierz jest górna trojkatna
 def triang_matrix(matrix, sigma = 0.001):
     for x in range(len(matrix)):
         for y in range(len(matrix[x])):
@@ -48,10 +55,11 @@ def triang_matrix(matrix, sigma = 0.001):
                     return False
     return True
 
-
+# liczenie wartoci własnych
 def eig_values(matrix):
     for x in range(len(matrix)):
         if (matrix == np.transpose(matrix)).all():
+            # dopoki macierz nie jest trojkatna to przybliżaj
             while not triang_matrix(matrix):
                 q, r = q_r(matrix)
                 matrix = np.dot(r,q)

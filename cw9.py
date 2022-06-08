@@ -6,6 +6,13 @@ Created on Fri May 13 20:25:05 2022
 """
 
 import numpy as np
+import math
+
+def dot_prod(v1,v2):
+    v3=0
+    for i in range(len(v1)):
+        v3 += v1[i]*v2[i]
+    return v3
 
 def proj(u, v):
     return (np.dot(v,u) / np.dot(u,u)) * u

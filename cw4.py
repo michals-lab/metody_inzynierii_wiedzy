@@ -7,6 +7,7 @@ Created on Mon Mar 28 10:41:22 2022
 
 import random
 
+
 def monte_carlo(n,x_p,x_k,y_p,y_k):
     p = (abs(y_k-y_p)*abs(x_k-x_p))
     u = lambda x: x

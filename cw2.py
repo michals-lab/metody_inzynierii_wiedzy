@@ -9,6 +9,7 @@ import numpy as np
 
 matrix = []
 
+# funkcja do wczytywania linika po linijce i zmiena na zmiennoprzecinkowe
 def open_file():
     with open("australian.dat","r") as file:
         matrix = [list(map(lambda a: float(a),line.split())) for line in file]
@@ -16,6 +17,7 @@ def open_file():
 
 # open_file()    
 
+# porównuje elementy listy i potem sqrt
 def euclid(lst1, lst2):
     tmp = 0
     for i in range(max(len(lst1),len(lst2))-1):
@@ -26,7 +28,6 @@ def euclid(lst1, lst2):
 matrix = open_file()
 # print(euclid(matrix[0],matrix[1]))
 # print(euclid(matrix[21],matrix[37]))
-
 # pd => odlelosc kazdego od zera, grupowanie wg klasy decyzyjnej
 # %%
 def distance(a,matrix):
@@ -35,13 +36,14 @@ def distance(a,matrix):
         if a not in matrix[i]:
             res.append((matrix[i][-1],euclid(a, matrix[i])))
     return res
-
+# obliczanie nalbliższych sąsiadów 
 def k_nearest_neighbors(dictionary, x):
     for i in dictionary.keys():
         dictionary[i].sort()
         dictionary[i] = sum(dictionary[i][:x])
     return dictionary
 
+# podział waktorów względem klasy decyzyjnej
 def group(li):
     res = {}
     for i in li:
